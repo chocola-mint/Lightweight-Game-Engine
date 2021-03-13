@@ -13,44 +13,38 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="來源檔案\core_impl">
+      <UniqueIdentifier>{f5018501-948a-4f1c-a954-3f84d28b768e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\core_def">
+      <UniqueIdentifier>{9e0a270c-5f61-4d5e-bda6-6d9edd6235d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libgameRendering.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="libgameInputManager.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="libgameDebug.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="testInit.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="libgameMain.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="testScene.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="libgameRendering.cpp">
+      <Filter>來源檔案\core_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="libgame.cpp">
+      <Filter>來源檔案\core_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="libgameDebug.cpp">
+      <Filter>來源檔案\core_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="libgameInputManager.cpp">
+      <Filter>來源檔案\core_impl</Filter>
+    </ClCompile>
+    <ClCompile Include="libgameMain.cpp">
+      <Filter>來源檔案\core_impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="primitives.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="libgameInputManager.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="libgameRendering.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="libgame.cpp">
-      <Filter>來源檔案</Filter>
-    </ClInclude>
-    <ClInclude Include="libgameDebug.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="libgame.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="testScene.h">
@@ -58,6 +52,18 @@
     </ClInclude>
     <ClInclude Include="defaultCamera.h">
       <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="libgame.h">
+      <Filter>標頭檔\core_def</Filter>
+    </ClInclude>
+    <ClInclude Include="libgameDebug.h">
+      <Filter>標頭檔\core_def</Filter>
+    </ClInclude>
+    <ClInclude Include="libgameInputManager.h">
+      <Filter>標頭檔\core_def</Filter>
+    </ClInclude>
+    <ClInclude Include="libgameRendering.h">
+      <Filter>標頭檔\core_def</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
