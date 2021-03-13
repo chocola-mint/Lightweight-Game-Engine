@@ -73,5 +73,8 @@
     <None Include="myFragmentShader.frag">
       <Filter>資源檔</Filter>
     </None>
+    <None Include="README.md">
+      <Filter>資源檔</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -171,6 +171,7 @@
   <ItemGroup>
     <None Include="myFragmentShader.frag" />
     <None Include="myVertexShader.vert" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
