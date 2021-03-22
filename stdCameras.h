@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef MAINCAMERA
-#define MAINCAMERA
+#ifndef STD_CAMERAS_H
+#define STD_CAMERAS_H
 
 #include "libgame.h"
 #include "libgameDebug.h"

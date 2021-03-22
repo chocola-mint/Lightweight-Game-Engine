@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PRIMITIVES_H
-#define PRIMITIVES_H
+#ifndef STD_PRIMITIVES_H
+#define STD_PRIMITIVES_H
 #include "libgameRendering.h"
 #include "libgameDebug.h"
 
@@ -62,7 +62,7 @@ namespace libgame {
 			glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_DYNAMIC_DRAW);
 			renderer = TriangleRenderer(vertexBufferId, colorBufferId);
-			shader.LoadShaders("myVertexShader.vert", "myFragmentShader.frag");
+			shader.LoadShaders("bareVertShader.vert", "bareFragShader.frag");
 		};
 
 		void SetVertices(Vector3 vert0, Vector3 vert1, Vector3 vert2) {
@@ -93,7 +93,8 @@ namespace libgame {
 		}
 
 		void FixedUpdate() override {
-			transform.rotation.z += fixedDeltaTime;
+			transform.Rotate(fixedDeltaTime, Vector3(0, 0, 1));
+			//transform.rotation.z += fixedDeltaTime;
 
 		}
 

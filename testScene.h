@@ -1,6 +1,6 @@
 #include "libgame.h"
-#include "defaultCamera.h"
-#include "primitives.h"
+#include "stdCameras.h"
+#include "stdPrimitives.h"
 #ifndef TESTSCENE
 #define TESTSCENE
 namespace libgame {

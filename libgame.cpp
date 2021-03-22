@@ -11,6 +11,34 @@ namespace libgame {
 	Matrix4 MVP = Matrix4(1.0f);
 	Window* window = nullptr;
 	Scene* currentScene = nullptr;
+
+	Matrix4 Transform::Model() {
+		return glm::translate(position)
+			* glm::toMat4(rotation)
+			* glm::scale(scale);
+	}
+
+	void Transform::SetRotation(const Vector3& eulerAngles) {
+		rotation = Quaternion(eulerAngles);
+
+	}
+
+	void Transform::Rotate(const float angle, const Vector3& axis) {
+		rotation = glm::rotate(rotation, angle, axis);
+	}
+
+	Vector3 Transform::Up() {
+		return glm::rotate(rotation, Vector3(0, 1, 0));
+	}
+
+	Vector3 Transform::Right() {
+		return glm::rotate(rotation, Vector3(1, 0, 0));
+	}
+
+	Vector3 Transform::Forward() {
+		return glm::rotate(rotation, Vector3(0, 0, 1));
+	}
+
 	
 
 	void ErrorCallback(int error, const char* description)

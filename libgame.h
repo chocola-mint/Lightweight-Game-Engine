@@ -14,29 +14,34 @@
 #include <set>
 #include <iostream>
 #include <string>
+#include <lua.hpp> // Library for Lua VM.
+
 namespace libgame {
 	typedef glm::vec2 Vector2;
 	typedef glm::vec3 Vector3;
 	typedef glm::mat4 Matrix4;
 	typedef glm::mat3 Matrix3;
 	typedef glm::vec4 Vector4;
+	typedef glm::quat Quaternion;
 	typedef GLFWwindow Window;
-
-	static const int VIEWPORT_WIDTH = 640;
-	static const int VIEWPORT_HEIGHT = 480;
+	const int VIEWPORT_WIDTH = 640;
+	const int VIEWPORT_HEIGHT = 480;
 	extern Matrix4 MVP;
+
 	/// <summary>
 	/// Class that describes an object's transformations.
 	/// </summary>
 	class Transform {
 	public:
-		Vector3 position, rotation, scale;
-		Transform() : position(0, 0, 0), rotation(0, 0, 0), scale(1, 1, 1) {};
-		Matrix4 Model() {
-			return glm::translate(position) 
-				* glm::toMat4(glm::quat(rotation))
-				* glm::scale(scale);
-		}
+		Vector3 position, scale;
+		Quaternion rotation;
+		Transform() : position(0, 0, 0), rotation(Vector3(0.0f, 0.0f, 0.0f)), scale(1, 1, 1) {};
+		Matrix4 Model();
+		void SetRotation(const Vector3& eulerAngles);
+		void Rotate(const float angle, const Vector3& axis);
+		Vector3 Up();
+		Vector3 Right();
+		Vector3 Forward();
 
 	};
 	
@@ -56,6 +61,45 @@ namespace libgame {
 		virtual void FixedUpdate() = 0;
 		virtual void Draw() = 0;
 		virtual void Start() = 0;
+	};
+
+	/// <summary>
+	/// A Subroutine Dispatcher that can act as a lightweight replacement for most Coroutine needs.
+	/// To use, add the Dispatcher to the class as a member variable, and call it in the class'
+	/// Update function. (Or FixedUpdate, if you want the dispatching to happen in fixed time rather than 
+	/// on every frame)
+	/// </summary>
+	/// <typeparam name="T">The class that will use the Dispatcher.</typeparam>
+	template<typename T>
+	class Dispatcher {
+	public:
+		typedef bool (T::*Subroutine)();
+	private:
+		std::vector<Subroutine> _subroutineVec;
+	public:
+
+		void Add(Subroutine& s) {
+			_subroutineVec.push_back(s);
+		}
+
+		void Clear() {
+			_subroutineVec.clear();
+		}
+
+		bool Empty() const {
+			return _subroutineVec.empty();
+		}
+		
+		void Update() {
+			for (int i = 0; i < _subroutineVec.size();) {
+				if (_subroutineVec[i]()){
+					std::swap(_subroutineVec[i], _subroutineVec.back());
+					_subroutineVec.pop_back();
+				}
+				else ++i;
+			}
+		}
+		
 	};
 
 	/// <summary>
